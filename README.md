@@ -1,35 +1,48 @@
 # Impostor Syndrome for AI Agents
 
-Give your agent a small, useful hesitation before it claims something is done.
+> I gave my AI agent impostor syndrome so it stops saying "fixed" before it has verified anything.
 
-This Codex skill teaches an AI agent to earn confidence with evidence: inspect what it actually verified, notice what went wrong during the current task, identify remaining uncertainty, and communicate with calibrated confidence instead of fake certainty.
+This is a tiny Agent Skill that makes coding and research agents more calibrated before they claim something is **done**, **fixed**, **safe**, **correct**, or **certain**.
 
-It is not self-doubt theater. It is a lightweight guardrail against confidently wrong answers.
+It tells the agent to check:
+
+- what it actually verified
+- what it already got wrong in the current task
+- what remains uncertain
+- whether its confidence is earned by evidence
+
+It is not about making the agent anxious or verbose. It is about making it honest.
 
 ## Why This Exists
 
-AI agents are most dangerous when they sound finished before they are finished.
+AI agents are often too confident at exactly the wrong moment:
 
-This skill makes the final answer harder to fake. Before the agent says "fixed", "complete", "safe", "correct", or "ready", it must check:
+> Fixed.
+> The tests pass.
+> This should work.
+> No issues found.
 
-- What did I verify?
-- What failed or contradicted my assumptions during this task?
-- What remains untested, stale, ambiguous, or outside my evidence?
-- Does my answer match the evidence?
+Sometimes that is true. Sometimes no test was run, no file was inspected, and no source was checked.
 
-That small pause changes the tone from overconfident completion theater to useful engineering communication.
+This skill nudges the agent to say what it knows, what it checked, and what remains unverified.
 
 ## Install
 
-For Codex-style skill folders:
+### Codex
 
 ```sh
-mkdir -p ~/.codex/skills/impostor-syndrome
-curl -fsSL https://raw.githubusercontent.com/flyrev/impostor-syndrome-ai-skill/main/SKILL.md \
-  -o ~/.codex/skills/impostor-syndrome/SKILL.md
+gh skill install flyrev/impostor-syndrome-ai-skill flyrev/impostor-syndrome --agent codex --scope user
 ```
 
-Or copy [SKILL.md](./SKILL.md) into the highest-priority durable instruction layer your agent supports.
+### Claude Code
+
+```sh
+gh skill install flyrev/impostor-syndrome-ai-skill flyrev/impostor-syndrome --agent claude-code --scope user
+```
+
+### Manual Install
+
+Copy [skills/flyrev/impostor-syndrome/SKILL.md](./skills/flyrev/impostor-syndrome/SKILL.md) into your agent's skills directory.
 
 ## Use It Anywhere
 
@@ -49,11 +62,19 @@ Do not perform theatrical self-doubt. Be concise, useful, and calibrated.
 
 Before:
 
-> Fixed it. The implementation is correct.
+> Fixed. This should work now.
+
+Follow-up:
+
+> Did you run the tests?
+
+Before:
+
+> No.
 
 After:
 
-> I changed the parser and verified it with the existing unit tests. I did not run the browser workflow, so the remaining uncertainty is whether the UI still renders the new error state correctly.
+> I changed the validation path and inspected the relevant function. I have not run the test suite, so I should not claim this is fixed yet. The next verification step is `npm test -- validation.test.ts`.
 
 Before:
 
@@ -73,12 +94,31 @@ Use this for:
 - team assistants that should say what is verified and what is not
 - any AI system whose confidence needs to be earned, not performed
 
+## Publishing
+
+This repository is packaged for GitHub's Agent Skill tooling at:
+
+```text
+skills/flyrev/impostor-syndrome/SKILL.md
+```
+
+Validate before publishing a release:
+
+```sh
+gh skill publish --dry-run
+```
+
 ## Shareable One-Liners
 
-- I installed impostor syndrome in my AI agent. It got more useful.
-- The best AI confidence feature is a mandatory "what did I actually verify?" check.
-- This is a tiny skill that makes agents stop saying "fixed" when they only mean "changed".
+- I gave my AI agent impostor syndrome so it stops saying "fixed" before it has verified anything.
+- New rule: AI agents should not be allowed to say "fixed" unless they can name the test, command, source, or file that proved it.
+- AI agents need less "CEO energy" and more "junior engineer who actually ran the tests" energy.
 - Operational impostor syndrome: not anxiety, just calibrated confidence.
+- Star this if your AI agent has ever lied to you confidently.
+
+## Maintainer Automation
+
+[scripts/](./scripts) contains maintainer-only automation for this repository. It is not part of installing or using the skill.
 
 ## Contribute
 

@@ -2,7 +2,7 @@ interface:
   display_name: "Impostor Syndrome"
   short_description: "Make AI confidence prove itself first"
   brand_color: "#2563EB"
-  default_prompt: "Use $impostor-syndrome-ai-skill to make the answer calibrated, evidence-aware, and explicit about what remains unverified."
+  default_prompt: "Use $impostor-syndrome to make the answer calibrated, evidence-aware, and explicit about what remains unverified."
 
 policy:
   allow_implicit_invocation: true
