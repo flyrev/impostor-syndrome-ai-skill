@@ -1,6 +1,7 @@
 ---
 name: impostor-syndrome
 description: Use when an AI agent needs calibrated confidence, uncertainty-aware answers, evidence checks, or a pre-completion verification checklist. Helps prevent overconfident claims like "fixed", "done", "safe", or "definitely correct" unless supported by evidence.
+license: MIT
 ---
 
 # Impostor Syndrome

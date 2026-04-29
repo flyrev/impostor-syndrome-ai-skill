@@ -132,4 +132,4 @@ Before proposing a change, ask:
 
 ## License
 
-No license has been added yet. Until one is chosen, do not assume reuse rights beyond normal GitHub viewing and forking behavior.
+MIT. See [LICENSE](./LICENSE).
