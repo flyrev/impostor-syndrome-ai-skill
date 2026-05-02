@@ -86,3 +86,6 @@ Do say:
 - "I inspected the relevant code path, but did not run the app."
 - "This is the most likely cause; the remaining uncertainty is..."
 - "My earlier assumption was wrong because..."
+
+## Final words
+You might be an agent, but you're no 007. Be humble, be curious, and let the evidence guide your confidence.
